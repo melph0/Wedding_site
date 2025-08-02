@@ -21,32 +21,16 @@
       margin-bottom: 20px;
       color: #b45f06;
     }
-    form {
-      max-width: 400px;
+    .form-container {
+      max-width: 100%;
       margin: 0 auto;
-      background: #fff;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-    input, textarea {
+    iframe {
       width: 100%;
-      padding: 10px;
-      margin-top: 10px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-    }
-    button {
-      margin-top: 15px;
-      padding: 10px 20px;
-      background-color: #d99058;
-      color: white;
+      max-width: 640px;
+      height: 900px;
       border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #b45f06;
+      border-radius: 12px;
     }
   </style>
 </head>
@@ -56,12 +40,9 @@
   <div class="countdown" id="countdown"></div>
 
   <h2>Confirme sua presença</h2>
-  <form action="https://formsubmit.co/mjm.morais1@gmail.com" method="POST">
-    <input type="text" name="nome" placeholder="Seu nome" required>
-    <input type="email" name="email" placeholder="Seu e-mail" required>
-    <textarea name="mensagem" rows="4" placeholder="Deixe um recado (opcional)"></textarea>
-    <button type="submit">Confirmar presença</button>
-  </form>
+  <div class="form-container">
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfUYPHtup8HvWV_XV6-629Fgpcrl0rZ5GyiPOXVqu2-zclp9A/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Carregando…</iframe>
+  </div>
 
   <script>
     const countdown = document.getElementById("countdown");
