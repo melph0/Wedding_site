@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anna & Matheus - Confirmação de Presença</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Anna & Matheus - RSVP</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -22,22 +22,35 @@
       color: #b45f06;
     }
     form {
-      max-width: 400px;
+      max-width: 500px;
       margin: 0 auto;
       background: #fff;
       padding: 20px;
       border-radius: 12px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-    input, textarea {
+    input, textarea, select {
       width: 100%;
       padding: 10px;
       margin-top: 10px;
       border-radius: 6px;
       border: 1px solid #ccc;
     }
-    button {
+    label {
+      display: block;
       margin-top: 15px;
+      text-align: left;
+    }
+    .checkbox-group {
+      text-align: left;
+      margin-top: 10px;
+    }
+    .checkbox-group input {
+      width: auto;
+      margin-right: 10px;
+    }
+    button {
+      margin-top: 20px;
       padding: 10px 20px;
       background-color: #d99058;
       color: white;
@@ -52,15 +65,34 @@
 </head>
 <body>
   <h1>Anna & Matheus</h1>
-  <p>Nosso grande dia será em <strong>11 de julho de 2026</strong>, em Utrecht! 💍</p>
+  <p>We're getting married on <strong>July 11, 2026</strong> in Utrecht! 💍</p>
   <div class="countdown" id="countdown"></div>
 
-  <h2>Confirme sua presença</h2>
+  <h2>RSVP</h2>
   <form action="https://formsubmit.co/mjm.morais1@gmail.com" method="POST">
-    <input type="text" name="nome" placeholder="Seu nome" required>
-    <input type="email" name="email" placeholder="Seu e-mail" required>
-    <textarea name="mensagem" rows="4" placeholder="Deixe um recado (opcional)"></textarea>
-    <button type="submit">Confirmar presença</button>
+    <input type="text" name="guest_name" placeholder="Guest name" required>
+    
+    <label for="attendance">Will you attend?</label>
+    <select name="attendance" id="attendance" required>
+      <option value="">-- Select an option --</option>
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+    </select>
+
+    <label>Dietary Restrictions:</label>
+    <div class="checkbox-group">
+      <input type="checkbox" name="diet[]" value="No restrictions"> No restrictions<br>
+      <input type="checkbox" name="diet[]" value="Vegetarian"> Vegetarian<br>
+      <input type="checkbox" name="diet[]" value="Vegan"> Vegan<br>
+    </div>
+
+    <label for="allergies">Any allergies or other notes:</label>
+    <input type="text" name="allergies" placeholder="E.g. nuts, gluten...">
+
+    <label for="message">Message (optional):</label>
+    <textarea name="message" rows="4" placeholder="Write us a note if you like!"></textarea>
+
+    <button type="submit">Submit RSVP</button>
   </form>
 
   <script>
@@ -72,7 +104,7 @@
       const distance = weddingDate - now;
 
       if (distance < 0) {
-        countdown.innerHTML = "🎉 O grande dia chegou!";
+        countdown.innerHTML = "🎉 Today is the big day!";
         return;
       }
 
@@ -81,7 +113,7 @@
       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-      countdown.innerHTML = `⏳ Faltam ${days} dias, ${hours}h ${minutes}m ${seconds}s`;
+      countdown.innerHTML = `⏳ ${days} days, ${hours}h ${minutes}m ${seconds}s to go!`;
     }
 
     setInterval(updateCountdown, 1000);
