@@ -3,97 +3,367 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Anna & Matheus - RSVP</title>
+  <meta name="description" content="RSVP for Anna & Matheus' wedding on July 11, 2026 in Utrecht">
+  <title>Anna & Matheus Wedding - RSVP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --primary-color: #d99058;
+      --primary-dark: #b45f06;
+      --secondary-color: #f8f3ee;
+      --text-color: #333;
+      --light-text: #666;
+      --white: #fff;
+      --border-radius: 8px;
+      --box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    
     body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      background: #fef9f4;
-      color: #333;
-      padding: 20px;
+      font-family: 'Montserrat', sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      background: var(--secondary-color);
+      margin: 0;
+      padding: 0;
+      position: relative;
+      overflow-x: hidden;
     }
-    h1 {
-      font-size: 2.5em;
-      margin-bottom: 0.2em;
+    
+    /* Rose decorations */
+    .rose-decoration {
+      position: absolute;
+      opacity: 0.15;
+      z-index: 0;
+      pointer-events: none;
     }
-    .countdown {
-      font-size: 1.5em;
-      margin-bottom: 20px;
-      color: #b45f06;
+    
+    .rose-left {
+      left: -50px;
+      top: 100px;
+      width: 200px;
+      transform: rotate(-15deg);
     }
-    form {
-      max-width: 500px;
+    
+    .rose-right {
+      right: -50px;
+      top: 100px;
+      width: 200px;
+      transform: rotate(15deg);
+    }
+    
+    .rose-bottom {
+      bottom: -50px;
+      left: 50%;
+      transform: translateX(-50%) rotate(180deg);
+      width: 250px;
+    }
+    
+    .container {
+      max-width: 1200px;
       margin: 0 auto;
-      background: #fff;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      padding: 40px 20px;
+      position: relative;
+      z-index: 1;
     }
-    input, textarea, select {
-      width: 100%;
-      padding: 10px;
-      margin-top: 10px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
+    
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding: 20px 0;
     }
+    
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+      color: var(--primary-dark);
+    }
+    
+    h1 {
+      font-size: 2.8em;
+      margin-bottom: 0.2em;
+      letter-spacing: 1px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    h1:before, h1:after {
+      content: "❀";
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--primary-color);
+      font-size: 0.6em;
+      opacity: 0.7;
+    }
+    
+    h1:before {
+      left: -30px;
+    }
+    
+    h1:after {
+      right: -30px;
+    }
+    
+    .subtitle {
+      font-size: 1.2em;
+      color: var(--light-text);
+      margin-bottom: 30px;
+    }
+    
+    .countdown {
+      font-size: 1.3em;
+      margin: 30px auto;
+      padding: 15px;
+      background: var(--white);
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      max-width: 500px;
+      color: var(--primary-dark);
+      position: relative;
+    }
+    
+    .divider {
+      width: 100px;
+      height: 2px;
+      background: var(--primary-color);
+      margin: 30px auto;
+      position: relative;
+    }
+    
+    .divider:before, .divider:after {
+      content: "❀";
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--primary-color);
+    }
+    
+    .divider:before {
+      left: -20px;
+    }
+    
+    .divider:after {
+      right: -20px;
+    }
+    
+    .rsvp-section {
+      max-width: 600px;
+      margin: 0 auto;
+      background: var(--white);
+      padding: 40px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      position: relative;
+    }
+    
+    form {
+      margin-top: 20px;
+    }
+    
+    .form-group {
+      margin-bottom: 25px;
+    }
+    
     label {
       display: block;
-      margin-top: 15px;
-      text-align: left;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: var(--primary-dark);
     }
+    
+    input, textarea, select {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: var(--border-radius);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      transition: border 0.3s ease;
+    }
+    
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: var(--primary-color);
+    }
+    
     .checkbox-group {
-      text-align: left;
-      margin-top: 10px;
+      margin-top: 15px;
     }
-    .checkbox-group input {
+    
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    
+    .checkbox-item input {
       width: auto;
       margin-right: 10px;
     }
+    
     button {
-      margin-top: 20px;
-      padding: 10px 20px;
-      background-color: #d99058;
-      color: white;
+      display: inline-block;
+      padding: 14px 30px;
+      background-color: var(--primary-color);
+      color: var(--white);
       border: none;
-      border-radius: 6px;
+      border-radius: var(--border-radius);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      font-weight: 500;
       cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+      margin-top: 10px;
+      position: relative;
+      overflow: hidden;
     }
+    
     button:hover {
-      background-color: #b45f06;
+      background-color: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+    
+    button:after {
+      content: "❀";
+      position: absolute;
+      right: 20px;
+      opacity: 0.3;
+    }
+    
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      padding: 20px;
+      color: var(--light-text);
+      font-size: 0.9em;
+    }
+    
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.2em;
+      }
+      
+      .rose-left, .rose-right {
+        width: 150px;
+      }
+      
+      .rose-bottom {
+        width: 200px;
+      }
+      
+      .rsvp-section {
+        padding: 30px 20px;
+      }
+      
+      h1:before, h1:after {
+        font-size: 0.5em;
+      }
+      
+      h1:before {
+        left: -20px;
+      }
+      
+      h1:after {
+        right: -20px;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>Anna & Matheus</h1>
-  <p>We're getting married on <strong>July 11, 2026</strong> in Utrecht! 💍</p>
-  <div class="countdown" id="countdown"></div>
+  <!-- Rose decorations -->
+  <svg class="rose-decoration rose-left" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <path d="M50,20 C55,10 65,5 75,10 C85,15 90,25 85,35 C80,45 70,50 60,45 C50,40 45,30 50,20 Z" fill="#d99058"/>
+    <path d="M45,25 C40,15 30,10 20,15 C10,20 5,30 10,40 C15,50 25,55 35,50 C45,45 50,35 45,25 Z" fill="#b45f06"/>
+  </svg>
+  
+  <svg class="rose-decoration rose-right" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <path d="M50,20 C55,10 65,5 75,10 C85,15 90,25 85,35 C80,45 70,50 60,45 C50,40 45,30 50,20 Z" fill="#d99058"/>
+    <path d="M45,25 C40,15 30,10 20,15 C10,20 5,30 10,40 C15,50 25,55 35,50 C45,45 50,35 45,25 Z" fill="#b45f06"/>
+  </svg>
+  
+  <svg class="rose-decoration rose-bottom" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <path d="M50,20 C55,10 65,5 75,10 C85,15 90,25 85,35 C80,45 70,50 60,45 C50,40 45,30 50,20 Z" fill="#d99058"/>
+    <path d="M45,25 C40,15 30,10 20,15 C10,20 5,30 10,40 C15,50 25,55 35,50 C45,45 50,35 45,25 Z" fill="#b45f06"/>
+  </svg>
 
-  <h2>RSVP</h2>
-  <form action="https://formsubmit.co/mjm.morais1@gmail.com" method="POST">
-    <input type="text" name="guest_name" placeholder="Guest name" required>
+  <div class="container">
+    <header>
+      <h1>Anna & Matheus</h1>
+      <p class="subtitle">We're getting married on <strong>July 11, 2026</strong> in Utrecht</p>
+      <div class="divider"></div>
+      <div class="countdown" id="countdown"></div>
+    </header>
+
+    <section class="rsvp-section">
+      <h2>RSVP</h2>
+      <p>Kindly respond by June 1, 2026</p>
+      
+      <form action="https://formsubmit.co/mjm.morais1@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New Wedding RSVP Submission">
+        <input type="hidden" name="_template" value="table">
+        
+        <div class="form-group">
+          <label for="guest_name">Full Name</label>
+          <input type="text" id="guest_name" name="guest_name" placeholder="Your full name" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="Your email address" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="attendance">Will you be attending?</label>
+          <select id="attendance" name="attendance" required>
+            <option value="">-- Please select --</option>
+            <option value="Yes, with joy">Yes, with joy</option>
+            <option value="Regretfully decline">Regretfully decline</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label>Dietary Requirements</label>
+          <div class="checkbox-group">
+            <div class="checkbox-item">
+              <input type="checkbox" id="no_restrictions" name="diet[]" value="No restrictions">
+              <label for="no_restrictions">No restrictions</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="vegetarian" name="diet[]" value="Vegetarian">
+              <label for="vegetarian">Vegetarian</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="vegan" name="diet[]" value="Vegan">
+              <label for="vegan">Vegan</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="gluten_free" name="diet[]" value="Gluten-free">
+              <label for="gluten_free">Gluten-free</label>
+            </div>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="allergies">Allergies or special requirements</label>
+          <input type="text" id="allergies" name="allergies" placeholder="Please list any allergies or special needs">
+        </div>
+        
+        <div class="form-group">
+          <label for="message">Message for the couple (optional)</label>
+          <textarea id="message" name="message" rows="4" placeholder="We'd love to hear from you!"></textarea>
+        </div>
+        
+        <button type="submit">Submit RSVP</button>
+      </form>
+    </section>
     
-    <label for="attendance">Will you attend?</label>
-    <select name="attendance" id="attendance" required>
-      <option value="">-- Select an option --</option>
-      <option value="Yes">Yes</option>
-      <option value="No">No</option>
-    </select>
-
-    <label>Dietary Restrictions:</label>
-    <div class="checkbox-group">
-      <input type="checkbox" name="diet[]" value="No restrictions"> No restrictions<br>
-      <input type="checkbox" name="diet[]" value="Vegetarian"> Vegetarian<br>
-      <input type="checkbox" name="diet[]" value="Vegan"> Vegan<br>
-    </div>
-
-    <label for="allergies">Any allergies or other notes:</label>
-    <input type="text" name="allergies" placeholder="E.g. nuts, gluten...">
-
-    <label for="message">Message (optional):</label>
-    <textarea name="message" rows="4" placeholder="Write us a note if you like!"></textarea>
-
-    <button type="submit">Submit RSVP</button>
-  </form>
+    <footer>
+      <p>With love, Anna & Matheus</p>
+    </footer>
+  </div>
 
   <script>
     const countdown = document.getElementById("countdown");
@@ -104,7 +374,7 @@
       const distance = weddingDate - now;
 
       if (distance < 0) {
-        countdown.innerHTML = "🎉 Today is the big day!";
+        countdown.innerHTML = "🎉 Today is our wedding day!";
         return;
       }
 
@@ -113,9 +383,13 @@
       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-      countdown.innerHTML = `⏳ ${days} days, ${hours}h ${minutes}m ${seconds}s to go!`;
+      countdown.innerHTML = `${days} days until we say "I do"`;
     }
 
+    // Initial call
+    updateCountdown();
+    
+    // Update every second
     setInterval(updateCountdown, 1000);
   </script>
 </body>
